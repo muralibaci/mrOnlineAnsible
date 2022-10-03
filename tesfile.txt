@@ -1,0 +1,2 @@
+
+checking the working of git from centos vm control host. 
