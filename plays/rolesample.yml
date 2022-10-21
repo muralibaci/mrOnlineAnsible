@@ -1,0 +1,8 @@
+---
+
+- name: Playbook demonstrates the functionality of loop while creaiing users 
+  hosts: webserver
+
+  roles:
+    - users:
+ 

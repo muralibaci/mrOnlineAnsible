@@ -1,0 +1,21 @@
+---
+# Tasks for users role 
+
+      - name: The Task creates 3 users from group_vars web_users variable
+        user:
+          name: "{{ item }}"
+          state: present
+        loop: "{{ web_users }}"
+        when: "'webserver' in group_names"
+        notify: Reboot system 
+
+      - name: Creates 3 DB user from group_vars variable db_users
+        user: 
+          name: "{{ item }}"
+          state: present
+        loop: "{{ db_users }}" 
+        notify: Reboot system
+        
+          
+        
+  

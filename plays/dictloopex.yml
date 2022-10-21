@@ -1,0 +1,24 @@
+---
+
+- name: Playbook demonstrates the functionality of loop while creaiing users 
+  hosts: slaves
+ 
+  tasks:
+    - name: The task creates 2 grops
+      group: 
+        name: "{{ item }}"
+        state: present
+      loop: 
+        - developers
+        - devops
+  
+    - name: Task to create dictionary based users.
+      user:
+        name: "{{ item.name }}"
+        state: present
+        groups: "{{ item.groups }}"
+      with_dict:
+        - { name: 'hari', groups: 'developers'}
+        - { nmae: 'ghouse', groups: 'devops'}   
+        - { name: 'ragini', groups: 'developers'}
+        - { name: 'mithun', groups: 'devops'}   

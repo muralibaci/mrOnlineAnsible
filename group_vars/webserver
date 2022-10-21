@@ -1,0 +1,12 @@
+# web server variables 
+
+  webusers:
+    - webuser1
+    - webuser2
+    - webuser3
+  web_users:
+    - memberuser
+    - adminuser 
+    - developeruser
+
+   

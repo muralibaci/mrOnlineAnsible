@@ -1,0 +1,10 @@
+---
+
+- name: Shutdown Nodes
+  hosts: slaves
+  become: true
+
+  tasks: 
+    - name: Shutdown both the slaves mahcines
+      community.general.shutdown:
+ 

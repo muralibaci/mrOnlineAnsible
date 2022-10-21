@@ -1,0 +1,9 @@
+---
+- name: Adhoc command tests using playbook 
+  hosts: all
+  become: yes
+  tasks: 
+    - name: validate a user test task 
+      user: 
+        name: testusr
+        state: absent 

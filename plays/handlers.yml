@@ -1,0 +1,30 @@
+---
+
+- name: Demonstration of handlers concept 
+  hosts: slaves
+  vars:
+    dbusers:
+      - dbuser1
+      - dbuser2
+      - dbuser3 
+
+  tasks: 
+    - name: Create Users task in Webservers
+      user: 
+        name: "{{ item }}"
+        state: present
+      loop: "{{ webusers }}" 
+      when: "'webserver' in group_names"
+      notify: Restart slave    
+
+    - name: Create users in dbservers
+      user: 
+        name: "{{ item }}"
+        state: present
+      loop: "{{ dbusers }}"
+      when: "'database' in group_names"
+      notify: Restart slave
+ 
+  handlers:
+    - name: Restart slave
+      reboot:         

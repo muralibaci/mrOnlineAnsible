@@ -1,0 +1,10 @@
+---
+- name: create user playbook
+  hosts: slaves
+  become: true
+  tasks: 
+    - name: User creation task 
+      user:
+        name: "{{ Students ['student']['name'] }}"
+        comment: "{{ Students ['student']['surname'] }}"
+        state: present

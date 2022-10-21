@@ -1,0 +1,11 @@
+---
+- name: create user playbook
+  hosts: slaves
+  become: true
+  vars:
+    username: test
+  tasks: 
+    - name: User creation task 
+      user:
+        name: "{{ username }}"
+        state: present

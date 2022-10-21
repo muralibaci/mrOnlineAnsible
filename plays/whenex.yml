@@ -1,0 +1,11 @@
+---
+- name: Demo of a when conditional task 
+  hosts: slavehost1
+  vars:
+    dotask: false 
+
+  tasks: 
+    - name: Condiation based installation 
+      yum: 
+        name: http
+      when: dotask       

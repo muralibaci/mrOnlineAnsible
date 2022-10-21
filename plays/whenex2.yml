@@ -1,0 +1,15 @@
+---
+- name: Demo of a when conditional task 
+  hosts: slavehost1
+  vars:
+    my_service: httpd
+    supported_os : 
+      - RedHat
+      - Fedora    
+
+  tasks: 
+    - name: Condition based installation 
+      yum: 
+        name: "{{ my_service }}"
+        state: present   
+      when: ansible_facts['distribution'] in supported_os       

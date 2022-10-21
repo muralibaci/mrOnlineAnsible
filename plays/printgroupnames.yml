@@ -1,0 +1,9 @@
+---
+
+- name: Print all group_names
+  hosts: all
+
+  tasks: 
+    - name: Print group_names that ansible is aware of.
+      debug:
+        msg: "{{ group_names }}"

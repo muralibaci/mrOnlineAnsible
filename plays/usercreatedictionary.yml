@@ -1,0 +1,15 @@
+---
+- name: create user playbook
+  hosts: slaves
+  become: true
+  vars:
+    username: 
+      student:
+        name: Murali
+        surname: Uppalapati
+  tasks: 
+    - name: User creation task 
+      user:
+        name: "{{ username ['student']['name'] }}"
+        comment: "{{ username ['student']['surname'] }}"
+        state: present

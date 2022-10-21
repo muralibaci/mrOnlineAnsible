@@ -1,0 +1,5 @@
+# example for group vars using slaves group 
+ Students:
+    student:
+      name: Murali 
+      surname: Uppalapati

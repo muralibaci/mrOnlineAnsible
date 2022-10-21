@@ -1,0 +1,16 @@
+---
+
+- name: Restart HTTPD if Postfix is running 
+  hosts: slavehost1
+
+  tasks: 
+    - name: Get Postfix server status 
+      command: /usr/bin/systemctl is-active postfix
+      ignore_errors: yes
+      register: result
+
+    - name: Restart HTTPD based on postfix status 
+      service:
+        name: httpd
+        state: restarted
+      when: result.rc != 0

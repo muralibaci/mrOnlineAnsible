@@ -1,0 +1,16 @@
+---
+
+- name: Start both slave machines
+  hosts: slaves
+  become: true
+  collections:
+    - community.vmware
+ 
+  tasks: 
+    - name: Start both the slave machines unconditionally
+      vmware_guest_powerstate:
+        hostname: "{{ slavehost2.example.com }}"
+        username: "{{ root }} "
+        password: "{{ murali }}"
+        name: slaveHost2
+        state: powered-on

@@ -1,0 +1,20 @@
+---
+- name: create user playbook
+  hosts: slaves
+  become: true
+
+  tasks: 
+    - name: Load variable from encryption file
+      include_vars:
+        file: my_secret_pass   
+    
+    - name: display the encrypted file
+      debug:
+        msg: "{{ secret }}"
+      no_log: true
+    
+    - name: User creation task 
+      user:
+        name: "{{ Students ['student']['name'] }}"
+        comment: "{{ Students ['student']['surname'] }}"
+        state: absent
